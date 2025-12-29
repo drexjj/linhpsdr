@@ -25,22 +25,13 @@ W4WHL
 ### Prerequisites for building
 
 ```
-  sudo apt-get install libfftw3-dev
-  sudo apt-get install libpulse-dev
-  sudo apt-get install libsoundio-dev
-  sudo apt-get install libasound2-dev
-  sudo apt-get install libgtk-3-dev
-  sudo apt-get install libsoapysdr-dev
+  sudo apt-get install libfftw3-dev libpulse-dev libsoundio-dev libasound2-dev libgtk-3-dev libsoapysdr-dev -y
 ```
 
 ### Prerequisites for installing the Debian Package
 
 ```
-  sudo apt-get install libfftw3-3
-  sudo apt-get install libpulse
-  sudo apt-get install libsoundio
-  sudo apt-get install libasound2
-  sudo apt-get install libsoapysdr
+  sudo apt-get install libfftw3-3 libpulse libsoundio libasound2 libsoapysdr -y
 ```
 
 
@@ -49,14 +40,9 @@ W4WHL
 
 ```
   git clone https://github.com/willardharris/linhpsdr.git
-  cd linhpsdr/wdsp
-  make clean
-  make
-  sudo make install
-  cd ..
-  make clean
-  make
-  sudo make install
+  
+  cd linhpsdr/wdsp & make clean & make & sudo make install
+  cd .. & make clean & make & sudo make install
   
 ```
 
