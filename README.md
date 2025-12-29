@@ -31,7 +31,7 @@ W4WHL
 ### Prerequisites for installing the Debian Package
 
 ```
-  sudo apt-get install libfftw3-3 libpulse libsoundio libasound2 libsoapysdr -y
+  sudo apt-get install libfftw3-dev libpulse-dev libsoundio-dev libasound2-dev libsoapysdr-dev -y
 ```
 
 
