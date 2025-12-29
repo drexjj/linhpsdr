@@ -5,9 +5,13 @@ GIT_VERSION := $(shell git describe --abbrev=0 --tags)
 
 CC=gcc
 LINK=gcc
+PKG_CONFIG = pkg-config
 
 GTKINCLUDES=`pkg-config --cflags gtk+-3.0`
 GTKLIBS=`pkg-config --libs gtk+-3.0`
+
+WDSP_INCLUDE=-I./wdsp
+WDSP_LIBS=wdsp/libwdsp.a `$(PKG_CONFIG) --libs fftw3`
 
 #OPENGL_OPTIONS=-D OPENGL
 #OPENGL_INCLUDES=`pkg-config --cflags epoxy`
@@ -76,9 +80,10 @@ OPTIONS=  $(MIDI_OPTIONS) $(AUDIO_OPTIONS)  $(SOAPYSDR_OPTIONS) \
          -D GIT_DATE='"$(GIT_DATE)"' -D GIT_VERSION='"$(GIT_VERSION)"'
 #OPTIONS=-g -Wno-deprecated-declarations $(AUDIO_OPTIONS) -D GIT_DATE='"$(GIT_DATE)"' -D GIT_VERSION='"$(GIT_VERSION)"' -O3 -D FT8_MARKER
 
-LIBS=-lrt -lm -lpthread -lwdsp $(GTKLIBS) $(AUDIO_LIBS) $(SOAPYSDR_LIBS) $(CWDAEMON_LIBS) $(OPENGL_LIBS) $(MIDI_LIBS)
+#LIBS=-lrt -lm -lpthread $(WDSP_LIBS) $(GTKLIBS) $(AUDIO_LIBS) $(SOAPYSDR_LIBS) $(CWDAEMON_LIBS) $(OPENGL_LIBS) $(MIDI_LIBS)
+LIBS=	$(LDFLAGS) $(AUDIO_LIBS) $(GTKLIBS) $(SOAPYSDR_LIBS) $(CWDAEMON_LIBS) $(OPENGL_LIBS) $(MIDI_LIBS) $(WDSP_LIBS) -lrt -lm -lpthread
 
-INCLUDES=$(GTKINCLUDES) $(OPGL_INCLUDES)
+INCLUDES=$(GTKINCLUDES) $(WDSP_INCLUDE) $(OPGL_INCLUDES)
 
 COMPILE=$(CC) $(CFLAGS) $(OPTIONS) $(INCLUDES)
 
